@@ -3802,6 +3802,12 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
+var userMenuButton = document.getElementById('userMenuButton');
+var userMenu = document.getElementById('userMenu');
+userMenuButton.addEventListener('click', function () {
+  userMenu.classList.toggle('hidden');
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
