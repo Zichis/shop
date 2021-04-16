@@ -32088,6 +32088,41 @@ select {
   --tw-backdrop-sepia: sepia(100%);
 }
 
+.material-form-control label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #5fa8d3;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.material-form-control label .label-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.material-form-control input:focus + label .label-name,
+.material-form-control input:valid + label .label-name {
+  transform: translateY(-100%);
+  font-size: 14px;
+  color: #5fa8d3;
+}
+
+.material-form-control input:focus + label::after,
+.material-form-control input:valid + label::after {
+  transform: translateX(0%);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -187942,4 +187977,3 @@ select {
     --tw-backdrop-sepia: sepia(100%);
   }
 }
-
