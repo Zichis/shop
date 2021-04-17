@@ -13,7 +13,8 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // TODO: Check if user is authorized
+        return true;
     }
 
     /**
@@ -24,7 +25,11 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required'],
+            'description' => ['required'],
+            'quantity' => ['required'],
+            'price' => ['required'],
+            'image' => ['required', 'mimes:jpeg,png', 'max:2048']
         ];
     }
 }
