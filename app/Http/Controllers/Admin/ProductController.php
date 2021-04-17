@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,7 +17,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.index');
+        $products = Product::with(['images'])->get();
+
+        return view('admin.product.index', [
+            'products' => $products
+        ]);
     }
 
     /**
@@ -25,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
     /**
@@ -34,9 +40,28 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $image = $validated['image'];
+        $imageName = time() . '_' . $image->getClientOriginalName();
+
+        $product = Product::create([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'quantity' => $validated['quantity'],
+            'price' => $validated['price']
+        ]);
+
+        //$image->move(public_path('images/products', $imageName));
+        $image->move('images/products', $imageName, 'public');
+
+        $productImage = ProductImage::create([
+            'name' => time() . '_' . $image->getClientOriginalName(),
+            'product_id' => $product->id
+        ]);
+
+        return redirect()->route('admin.products.index');
     }
 
     /**
