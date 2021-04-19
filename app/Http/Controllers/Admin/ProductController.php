@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\ProductImage;
+use File;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -83,7 +85,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.product.edit', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -93,9 +97,34 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $validated = $request->validated();
+        if (array_key_exists("image", $validated)) {
+            $image = $validated['image'];
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move('images/products', $imageName, 'public');
+            $productImage = ProductImage::create([
+                'name' => time() . '_' . $image->getClientOriginalName(),
+                'product_id' => $product->id
+            ]);
+
+            $oldImage = $product->images[0];
+            $oldImagePath = "images/products/{$oldImage->name }";
+            if(File::exists(public_path($oldImagePath))){
+                File::delete(public_path($oldImagePath));
+                ProductImage::where('name', $oldImage->name)->delete();
+            }
+        }
+
+        $product->update([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'quantity' => $validated['quantity'],
+            'price' => $validated['price']
+        ]);
+
+        return redirect()->route('admin.products.index');
     }
 
     /**
