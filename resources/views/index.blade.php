@@ -22,7 +22,7 @@
                 <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                     <div class="relative flex items-center justify-between h-16">
                         <div>
-                            <h1 class="text-2xl text-gray-200 font-bold">Shop</h1>
+                            <h1 class="text-2xl text-gray-200 font-bold">T & R Shop</h1>
                         </div>
                         <div class="hidden md:block">
                             <input class="py-1 px-3 rounded-full w-72 focus:ring-transparent" type="text" name="search" id="search" placeholder="Search products...">
