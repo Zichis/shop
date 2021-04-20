@@ -41,6 +41,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function fullName()
+    {
+        return $this->profile->first_name . ' ' . $this->profile->last_name;
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
