@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('products', ProductController::class);
 });
