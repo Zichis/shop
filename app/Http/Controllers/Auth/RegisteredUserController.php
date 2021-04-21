@@ -53,6 +53,8 @@ class RegisteredUserController extends Controller
             'phone_number' => $request->phone_number
         ]);
 
+        $user->assignRole('ROLE_CUSTOMER');
+
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);
