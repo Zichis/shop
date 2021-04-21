@@ -31,11 +31,17 @@ class UserSeeder extends Seeder
             'address' => '19 Crawford Avenue, Lagos'
         ]);
 
-        $permissionsArray = ['add product', 'update product', 'delete product', 'view products'];
-        $admin = Role::create(['name' => 'ADMIN_ROLE']);
+        $adminPermissionsArray = ['add product', 'update product', 'delete product', 'view products'];
+        $customerPermissionsArray = ['view profile', 'make order', 'view orders', 'remove orders', 'update orders'];
+        $admin = Role::create(['name' => 'ROLE_ADMIN']);
+        $customer = Role::create(['name' => 'ROLE_CUSTOMER']);
 
-        foreach ($permissionsArray as $permission) {
+        foreach ($adminPermissionsArray as $permission) {
             $admin->givePermissionTo(Permission::create(['name' => $permission]));
+        }
+
+        foreach ($customerPermissionsArray as $permission) {
+            $customer->givePermissionTo(Permission::create(['name' => $permission]));
         }
 
         $user->assignRole($admin);
