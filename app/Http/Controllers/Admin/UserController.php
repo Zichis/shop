@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -13,7 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Role::findByName('ROLE_CUSTOMER')->users;
+
+        return view('admin.user.index', [
+            'customers' => $customers
+        ]);
     }
 
     /**
