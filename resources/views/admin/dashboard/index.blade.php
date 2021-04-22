@@ -19,7 +19,7 @@
                 <div class="bg-white border-l-4 border-blue-400 p-10 relative shadow-sm">
                     <i class="fas fa-users fa-3x absolute text-gray-100 right-5"></i>
                     <p class="text-gray-500">Customers</p>
-                    <h3 class="text-gray-700 text-xl font-bold">5</h3>
+                    <h3 class="text-gray-700 text-xl font-bold">{{ count($customers) }}</h3>
                 </div>
             </div>
             <div class="p-5 w-full md:w-1/2 lg:w-1/4">
