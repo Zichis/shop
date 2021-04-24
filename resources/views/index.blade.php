@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="my-3 p-5 text-center">
-                    <a href="#" class="p-3 border-2 border-yellow-600 font-bold text-yellow-600 hover:bg-yellow-600 hover:text-white">View more</a>
+                    <a href="{{ route('products.index') }}" class="p-3 border-2 border-yellow-600 font-bold text-yellow-600 hover:bg-yellow-600 hover:text-white">View more</a>
                 </div>
             </section>
         </div>
