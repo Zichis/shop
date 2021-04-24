@@ -11,7 +11,7 @@
                             <a href="{{ route('products.show', ['product' => $product->id]) }}">
                                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->name }}</h3>
                             </a>
-                            <p class="mt-1">{{ $product->price }}</p>
+                            <p class="mt-1">&#8358; {{ $product->price }}</p>
                         </div>
                     </div>
                 @endforeach
