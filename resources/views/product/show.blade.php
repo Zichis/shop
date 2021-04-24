@@ -6,6 +6,11 @@
                     @csrf
                     <img alt="product" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="{{ asset('images/products/' . $product->images[0]->name) }}">
                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                        @if (Session::has('error'))
+                            <div class="mb-3 p-2 bg-red-100 text-red-500 border border-red-500">
+                                {!! \Session::get('error') !!}
+                            </div>
+                        @endif
                         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $product->name }}</h1>
                         <p class="my-2 leading-relaxed">{{ $product->description }}</p>
                         <p class="my-2 title-font font-medium text-2xl text-gray-900">&#8358; {{ $product->price }}</p>
