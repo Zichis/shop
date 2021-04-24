@@ -96,176 +96,26 @@
             </div>
 
             <section class="text-gray-600 body-font">
-                <div class="container px-5 py-24 mx-auto">
+                <div class="container px-5 py-14 mx-auto">
+                    <p class="my-2">Latest Items</p>
                     <div class="flex flex-wrap -m-4">
-                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                            <a class="block relative h-48 rounded overflow-hidden">
-                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
-                            </a>
-                            <div class="mt-4">
-                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                <p class="mt-1">$16.00</p>
+                        @foreach ($products as $product)
+                            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                                <a class="block relative h-48 rounded overflow-hidden">
+                                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('images/products/' . $product->images[0]->name) }}">
+                                </a>
+                                <div class="mt-4">
+                                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->name }}</h3>
+                                    <p class="mt-1">{{ $product->price }}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                            <a class="block relative h-48 rounded overflow-hidden">
-                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/421x261">
-                            </a>
-                            <div class="mt-4">
-                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                <h2 class="text-gray-900 title-font text-lg font-medium">Shooting Stars</h2>
-                                <p class="mt-1">$21.15</p>
-                            </div>
-                        </div>
-                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                            <a class="block relative h-48 rounded overflow-hidden">
-                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/422x262">
-                            </a>
-                            <div class="mt-4">
-                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                <h2 class="text-gray-900 title-font text-lg font-medium">Neptune</h2>
-                                <p class="mt-1">$12.00</p>
-                            </div>
-                        </div>
-                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                            <a class="block relative h-48 rounded overflow-hidden">
-                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/423x263">
-                            </a>
-                            <div class="mt-4">
-                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                <h2 class="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                <p class="mt-1">$18.40</p>
-                            </div>
-                        </div>
-                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                            <a class="block relative h-48 rounded overflow-hidden">
-                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/424x264">
-                            </a>
-                            <div class="mt-4">
-                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                                <p class="mt-1">$16.00</p>
-                            </div>
-                        </div>
-                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                            <a class="block relative h-48 rounded overflow-hidden">
-                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/425x265">
-                            </a>
-                            <div class="mt-4">
-                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                <h2 class="text-gray-900 title-font text-lg font-medium">Shooting Stars</h2>
-                                <p class="mt-1">$21.15</p>
-                            </div>
-                        </div>
-                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                            <a class="block relative h-48 rounded overflow-hidden">
-                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/427x267">
-                            </a>
-                            <div class="mt-4">
-                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                <h2 class="text-gray-900 title-font text-lg font-medium">Neptune</h2>
-                                <p class="mt-1">$12.00</p>
-                            </div>
-                        </div>
-                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                            <a class="block relative h-48 rounded overflow-hidden">
-                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268">
-                            </a>
-                            <div class="mt-4">
-                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                <h2 class="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                <p class="mt-1">$18.40</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+                </div>
+                <div class="my-3 p-5 text-center">
+                    <a href="#" class="p-3 border-2 border-yellow-600 font-bold text-yellow-600 hover:bg-yellow-600 hover:text-white">View more</a>
                 </div>
             </section>
-
-            <!--<main class="p-5">
-                <div class="bg-white p-5 my-5 rounded shadow-sm">
-                    <h3 class="my-2 font-bold text-gray-800">Featured</h3>
-                    <hr>
-                    <div class="my-4 flex justify-between flex-wrap">
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white p-5 my-5 rounded shadow-sm">
-                    <h3 class="my-2 font-bold text-gray-800">Latest</h3>
-                    <hr>
-                    <div class="my-4 flex justify-between flex-wrap">
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                        <div class="p-3 border mb-5 md:mr-1 border-gray-300 hover:shadow-md w-full sm:w1/2 md:w-1/4 lg:w-1/6">
-                            <div class="h-52" style="background: url(https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500); background-size: cover; background-position: center;"></div>
-                            <div>
-                                <p>Can Coke</p>
-                                <p>NGN 100</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>-->
         </div>
     </body>
 </html>
