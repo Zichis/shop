@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
+use App\Http\Requests\MakeOrderRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -30,12 +33,30 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  MakeOrderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MakeOrderRequest $request)
     {
-        //
+        $product = Product::findOrfail($request->product_id);
+        $existingOrder = Order::where(['product_id' => $product->id, 'status' => 'incomplete'])->first();
+
+        if ($existingOrder) {
+            return redirect()->back()->with('error', 'You have this item in your cart.');
+        }
+
+        $validated = $request->validated();
+
+        Order::create([
+            'user_id' => Auth::user()->id,
+            'product_id' => $request->product_id,
+            'product_name' => $product->name,
+            'product_price' => $product->price,
+            'quantity' => $request->quantity,
+            'total' => strval($request->quantity * $product->price)
+        ]);
+
+        return redirect()->route('customer.dashboard');
     }
 
     /**
