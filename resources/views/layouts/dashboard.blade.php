@@ -20,7 +20,11 @@
         <div class="min-h-screen bg-gray-100">
             <div class="flex">
                 <!-- Sidemenu -->
-                @include('layouts.sidemenu')
+                @hasrole('ROLE_ADMIN')
+                    @include('layouts.sidemenu')
+                @else
+                    @include('layouts.customerSidemenu')
+                @endhasrole
                 <div class="bg-gray-200 pl-14 h-screen overflow-y-scroll w-full">
                     @include('layouts.dashboardHeader')
                     <div>{{ $slot }}</div>
