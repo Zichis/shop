@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     <div class="p-5">
         <div class="md:flex justify-between items-center mb-5 p-5 bg-white text-yellow-600">
-            <p class="text-2xl sm:mb-2">Total: &#8358; {{ $total }}</p>
+            <p class="text-2xl sm:mb-2">Total: &#8358;{{ $total }}</p>
             <a href="#" class="py-1 px-2 font-bold bg-yellow-600 text-yellow-50 hover:bg-yellow-500 hover:text-white">Checkout</a>
         </div>
         <div class="flex px-3 py-5 bg-yellow-600 text-white font-bold">
