@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
+use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
 use App\Http\Requests\MakeOrderRequest;
@@ -17,7 +18,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Auth::user()->orders()->where('status', 'incomplete')->get();
+        $sum = Auth::user()->orders()->where('status', 'incomplete')->sum('total');
+
+        return view('customer.order.index', [
+            'orders' => $orders,
+            'total' => $sum
+        ]);
     }
 
     /**
