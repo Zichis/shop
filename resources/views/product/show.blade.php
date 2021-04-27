@@ -1,4 +1,4 @@
-<x-custom-layout>
+<x-custom-layout :cartCount="$cartCount">
     <section class="text-gray-600 body-font overflow-hidden">
         <div class="container px-5 py-16 mx-auto">
             <form action="{{ route('customer.orders.store') }}" method="post">

@@ -1,4 +1,4 @@
-<x-custom-layout>
+<x-custom-layout :cartCount="$cartCount">
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-14 mx-auto">
             <div class="flex flex-wrap -m-4">
