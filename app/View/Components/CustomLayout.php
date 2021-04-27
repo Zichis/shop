@@ -6,6 +6,13 @@ use Illuminate\View\Component;
 
 class CustomLayout extends Component
 {
+    public $cartCount;
+
+    public function __construct($cartCount)
+    {
+        $this->cartCount = $cartCount;
+    }
+
     /**
      * Get the view / contents that represents the component.
      *
