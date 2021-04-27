@@ -18,4 +18,13 @@ class CartController extends Controller
             'total' => $sum
         ]);
     }
+
+    public function checkout()
+    {
+        $sum = Auth::user()->orders()->where('status', 'incomplete')->sum('total');
+
+        return view('customer.cart.checkout', [
+            'total' => $sum
+        ]);
+    }
 }
