@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\OrderController;
+use App\Http\Controllers\Customer\PaymentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
@@ -37,6 +38,9 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
 Route::middleware(['auth'])->name('customer.')->prefix('customer')->group(function () {
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+    Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
+    Route::get('/payment-callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');
     Route::resource('orders', OrderController::class);
 });
 
