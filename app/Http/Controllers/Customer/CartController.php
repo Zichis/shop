@@ -13,7 +13,7 @@ class CartController extends Controller
         $orders = Auth::user()->orders()->where('status', 'incomplete')->get();
         $sum = Auth::user()->orders()->where('status', 'incomplete')->sum('total');
 
-        return view('customer.order.index', [
+        return view('customer.cart.index', [
             'orders' => $orders,
             'total' => $sum
         ]);
