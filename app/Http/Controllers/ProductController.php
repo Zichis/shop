@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -15,9 +16,14 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with(['images'])->get();
+        $cartCount = 0;
+        if (Auth::check()) {
+            $cartCount = Auth::user()->orders()->where('status', 'incomplete')->count();
+        }
 
         return view('product.index', [
-            'products' => $products
+            'products' => $products,
+            'cartCount' => $cartCount
         ]);
     }
 
@@ -50,8 +56,14 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $cartCount = 0;
+        if (Auth::check()) {
+            $cartCount = Auth::user()->orders()->where('status', 'incomplete')->count();
+        }
+
         return view('product.show', [
-            'product' => $product
+            'product' => $product,
+            'cartCount' => $cartCount
         ]);
     }
 
