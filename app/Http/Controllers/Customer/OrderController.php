@@ -18,12 +18,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Auth::user()->orders()->where('status', 'incomplete')->get();
-        $sum = Auth::user()->orders()->where('status', 'incomplete')->sum('total');
+        $orders = Auth::user()->orders()->where('status', 'complete')->get();
 
         return view('customer.order.index', [
-            'orders' => $orders,
-            'total' => $sum
+            'orders' => $orders
         ]);
     }
 
