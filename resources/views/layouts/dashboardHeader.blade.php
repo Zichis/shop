@@ -4,4 +4,7 @@
     <p>
         <a href="{{ route('home') }}" class="text-sm text-yellow-600 font-bold hover:text-yellow-500">{{ config('app.name', 'T & R SuperStore') }}</a>
     </p>
+    <p>
+        <a href="{{ route('products.index') }}" class="text-sm text-gray-400 font-bold hover:text-gray-600">Go to shop</a>
+    </p>
 </div>
