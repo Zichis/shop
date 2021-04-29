@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'T & R SuperStore') }}</title>
+
+        <link rel="icon" href="{{ asset('images/company/default_company_logo.jpeg') }}" sizes="16x16">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -21,7 +23,8 @@
             <nav class="bg-gray-800">
                 <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                     <div class="relative flex items-center justify-between h-16">
-                        <div>
+                        <div class="flex">
+                            <img src="{{ asset('images/company/default_company_logo.jpeg') }}" class="w-9 h-9 mr-2" alt="company logo">
                             <h1 class="text-2xl text-gray-200 font-bold">
                                 <a href="{{ route('home') }}">T & R Shop</a>
                             </h1>
