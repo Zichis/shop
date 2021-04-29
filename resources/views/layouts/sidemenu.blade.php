@@ -9,5 +9,12 @@
         <a href="{{ route('admin.users.index') }}" class="p-2 block my-5 @if(Request::url() == route('admin.users.index')) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
             <i class="fas fa-users"></i>
         </a>
+        <hr class="border-gray-700">
+        <a href="{{ route('customer.cart.index') }}" class="p-2 block my-5 @if(Request::url() == route('customer.cart.index') || Request::url() == route('customer.cart.checkout')) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+        <a href="{{ route('customer.orders.index') }}" class="p-2 block my-5 @if(Request::url() == route('customer.orders.index')) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
+            <i class="fas fa-shopping-bag"></i>
+        </a>
     </div>
 </div>
