@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,7 +64,13 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        //
+        if (Auth::user()->profile->id !== $profile->id) {
+            abort(401);
+        }
+
+        return view('customer.profile.edit', [
+            'profile' => $profile
+        ]);
     }
 
     /**
@@ -73,9 +80,26 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(UpdateProfileRequest $request, Profile $profile)
     {
-        //
+        if (Auth::user()->profile->id !== $profile->id) {
+            abort(401);
+        }
+
+        $validated = $request->validated();
+
+        $profile->user()->update([
+            'email' => $validated['email']
+        ]);
+
+        $profile->update([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'address' => $validated['address'],
+            'phone_number' => $validated['phone_number']
+        ]);
+
+        return redirect()->route('customer.profile.index');
     }
 
     /**
