@@ -18,7 +18,7 @@
                     @foreach ($customers as $customer)
                         <tr class="@if($loop->iteration % 2 == 0) bg-gray-100 @endif">
                             <td class="p-2">{{ $customer->fullName() }}</td>
-                            <td class="p-2">-</td>
+                            <td class="p-2">{{ count($customer->orders) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
