@@ -21,10 +21,12 @@ class CartController extends Controller
 
     public function checkout()
     {
+        $orders = Auth::user()->orders()->where('status', 'incomplete')->count();
         $sum = Auth::user()->orders()->where('status', 'incomplete')->sum('total');
 
         return view('customer.cart.checkout', [
-            'total' => $sum
+            'total' => $sum,
+            'orders' => $orders
         ]);
     }
 }
