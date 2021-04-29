@@ -61,7 +61,7 @@ class OrderController extends Controller
             'total' => strval($request->quantity * $product->price)
         ]);
 
-        return redirect()->route('customer.dashboard');
+        return redirect()->route('products.index');
     }
 
     /**
