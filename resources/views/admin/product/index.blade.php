@@ -30,6 +30,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="my-5">
+                {{ $products->links() }}
+            </div>
         </div>
     </div>
 </x-dashboard-layout>
