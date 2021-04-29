@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -15,7 +16,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $customer = Auth::user();
+
+        return view('customer.profile.index', [
+            'customer' => $customer
+        ]);
     }
 
     /**
