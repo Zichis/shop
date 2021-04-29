@@ -10,6 +10,9 @@
             <i class="fas fa-users"></i>
         </a>
         <hr class="border-gray-700">
+        <a href="{{ route('customer.profile.index') }}" class="p-2 block my-5 @if(Request::url() == route('customer.profile.index') || Request::url() == route('customer.profile.edit', ['profile' => Auth::user()->profile->id])) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
+            <i class="fas fa-user"></i>
+        </a>
         <a href="{{ route('customer.cart.index') }}" class="p-2 block my-5 @if(Request::url() == route('customer.cart.index') || Request::url() == route('customer.cart.checkout')) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
             <i class="fas fa-shopping-cart"></i>
         </a>
