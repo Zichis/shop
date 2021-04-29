@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\PaymentController;
+use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
@@ -42,6 +43,7 @@ Route::middleware(['auth'])->name('customer.')->prefix('customer')->group(functi
     Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
     Route::get('/payment-callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');
     Route::resource('orders', OrderController::class);
+    Route::resource('profile', ProfileController::class);
 });
 
 require __DIR__.'/auth.php';
