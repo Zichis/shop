@@ -3,9 +3,6 @@
         <div class="p-5 bg-white shadow-lg rounded border border-gray-300">
             <div class="flex justify-between items-center mb-3">
                 <h2 class="text-2xl font-bold text-gray-700">Customers</h2>
-                <a href="#" class=" bg-gray-800 text-gray-100 px-3 py-1 rounded shadow-md font-semibold hover:bg-gray-700">
-                    Add
-                </a>
             </div>
             <table class="table-auto w-full text-left whitespace-no-wrap">
                 <thead class="p-5 shadow-lg bg-yellow-600 text-white">
@@ -17,7 +14,9 @@
                 <tbody>
                     @foreach ($customers as $customer)
                         <tr class="@if($loop->iteration % 2 == 0) bg-gray-100 @endif">
-                            <td class="p-2">{{ $customer->fullName() }}</td>
+                            <td class="p-2">
+                                <a href="{{ route('admin.users.show', ['user' => $customer->id]) }}" class="text-gray-800 hover:text-gray-900">{{ $customer->fullName() }}</a>
+                            </td>
                             <td class="p-2">{{ count($customer->orders) }}</td>
                         </tr>
                     @endforeach
