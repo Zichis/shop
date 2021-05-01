@@ -61,6 +61,7 @@
                                         <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Log in</a>
                                         <a href="{{ route('register') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Create account</a>
                                     @endif
+                                    <a href="{{ route('fitness') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Fitness</a>
                                 </div>
                             </div>
                         </div>
