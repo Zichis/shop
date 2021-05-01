@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\OrderController;
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/fitness', [PageController::class, 'fitness'])->name('fitness');
 Route::resource('/products', ProductController::class);
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
