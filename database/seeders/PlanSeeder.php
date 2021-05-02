@@ -14,7 +14,7 @@ class PlanSeeder extends Seeder
      */
     public function run()
     {
-        Plan::create(
+        Plan::insert([
             [
                 'sub_name' => 'First Plan',
                 'name' => 'One Session',
@@ -57,7 +57,7 @@ class PlanSeeder extends Seeder
             ],
             [
                 'sub_name' => 'Fifth Plan',
-                'name' => 'One Session',
+                'name' => 'Yearly',
                 'single_price' => '90000',
                 'single_discount' => '5',
                 'couple_price' => '180000',
@@ -65,6 +65,6 @@ class PlanSeeder extends Seeder
                 'family_price' => '192000',
                 'family_discount' => '30'
             ]
-        );
+        ]);
     }
 }

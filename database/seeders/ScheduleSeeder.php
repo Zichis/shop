@@ -14,7 +14,7 @@ class ScheduleSeeder extends Seeder
      */
     public function run()
     {
-        Schedule::create(
+        Schedule::insert([
             [
                 'day' => 'Monday',
                 'morning' => 'Body Tone/Aerobics',
@@ -50,6 +50,6 @@ class ScheduleSeeder extends Seeder
                 'morning' => '',
                 'evening' => "Self Workout With Instructor's Supervision"
             ]
-        );
+        ]);
     }
 }
