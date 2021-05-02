@@ -43,8 +43,6 @@
                         <div class="flex gap-3 justify-center">
                             <a href="#plans" class="inline-flex py-2 px-6 rounded bg-green-500 text-white text-lg hover:bg-green-600">Pricing</a>
                             <a href="#schedule" class="inline-flex py-2 px-6 rounded border border-gray-600 text-gray-600 text-lg hover:bg-gray-600 hover:text-white">Schedule</a>
-                            <!--<button class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">See Plans</button>
-                            <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Timetable</button>-->
                         </div>
                     </div>
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
@@ -59,157 +57,179 @@
                         <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500">Below are the different plans we have currently. There is a plan for everyone. </p>
                         <p>Payments can be made to our Keystone Bank account, <span class="text-green-500 font-bold">1012158608 (T & R Superstore)</span></p>
                     </div>
-                    <div class="flex flex-wrap justify-center -m-4">
-                        <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
-                            <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
-                                <h2 class="text-sm tracking-widest title-font mb-1 font-medium">FIRST PLAN</h2>
-                                <h1 class="text-4xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">One Session</h1>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                    <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                        <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                    </span>Single: &#8358;3000
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
+                    @if (count($plans) > 0)
+                        <div class="flex flex-wrap justify-center -m-4">
+                            @foreach ($plans as $plan)
+                                <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
+                                    <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+                                        <span class="bg-green-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
+                                        <h2 class="text-sm tracking-widest title-font mb-1 font-medium uppercase">{{ $plan->sub_name }}</h2>
+                                        <h1 class="text-4xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">{{ $plan->name }}</h1>
+                                        <p class="flex items-center text-gray-600 mb-2">
+                                            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                                <path d="M20 6L9 17l-5-5"></path>
+                                            </svg>
+                                            </span>Single:
+                                            @if($plan->single_discount != '0')
+                                                &nbsp;<span class="line-through text-red-500">&#8358;{{ $plan->single_price }}</span>&nbsp;<span>&#8358;{{ (100 - $plan->single_discount) * ($plan->single_price)/100 }}</span>
+                                            @else
+                                                &#8358;{{  $plan->single_price }}
+                                            @endif
+                                        </p>
+                                        <p class="flex items-center text-gray-600 mb-2">
+                                            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                                    <path d="M20 6L9 17l-5-5"></path>
+                                                </svg>
+                                            </span>Couple:
+                                            @if($plan->couple_discount != '0')
+                                                &nbsp;<span class="line-through text-red-500">&#8358;{{ $plan->couple_price }}</span>&nbsp;<span>&#8358;{{ (100 - $plan->couple_discount) * ($plan->couple_price)/100 }}</span>
+                                            @else
+                                                &#8358;{{  $plan->couple_price }}
+                                            @endif
+                                        </p>
+                                        <p class="flex items-center text-gray-600 mb-2">
+                                            <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                                    <path d="M20 6L9 17l-5-5"></path>
+                                                </svg>
+                                            </span>Family:
+                                            @if($plan->family_discount != '0')
+                                                &nbsp;<span class="line-through text-red-500">&#8358;{{ $plan->family_price }}</span>&nbsp;<span>&#8358;{{ (100 - $plan->family_discount) * ($plan->family_price)/100 }}</span>
+                                            @else
+                                                &#8358;{{  $plan->family_price }}
+                                            @endif
+                                        </p>
+                                        <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <!--<div class="p-4 xl:w-1/3 md:w-1/2 w-full">
+                                <div class="h-full p-6 rounded-lg border-2 border-green-500 flex flex-col relative overflow-hidden">
+                                    <span class="bg-green-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
+                                    <h2 class="text-sm tracking-widest title-font mb-1 font-medium">SECOND PLAN</h2>
+                                    <h1 class="text-4xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+                                    Monthly
+                                    </h1>
+                                    <p class="flex items-center text-gray-600 mb-2">
                                     <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                            <path d="M20 6L9 17l-5-5"></path>
+                                        <path d="M20 6L9 17l-5-5"></path>
                                         </svg>
-                                    </span>Couple: &nbsp;<span class="line-through text-red-500">&#8358;6,000</span>&nbsp;<span>&#8358;5,400</span>
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
+                                    </span>Single: &nbsp;<span>&#8358;10,000</span>
+                                    </p>
+                                    <p class="flex items-center text-gray-600 mb-2">
                                     <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                            <path d="M20 6L9 17l-5-5"></path>
+                                        <path d="M20 6L9 17l-5-5"></path>
                                         </svg>
-                                    </span>Family: &nbsp;<span class="line-through text-red-500">&#8358;12,000</span>&nbsp;<span>&#8358;9,000</span>
-                                </p>
-                                <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
-                            </div>
-                        </div>
-                        <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
-                            <div class="h-full p-6 rounded-lg border-2 border-green-500 flex flex-col relative overflow-hidden">
-                                <span class="bg-green-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
-                                <h2 class="text-sm tracking-widest title-font mb-1 font-medium">SECOND PLAN</h2>
-                                <h1 class="text-4xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                Monthly
-                                </h1>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </span>Single: &nbsp;<span>&#8358;10,000</span>
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </span>Couple: &nbsp;<span class="line-through text-red-500">&#8358;20,000</span>&nbsp;<span>&#8358;18,000</span>
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </span>Family: &nbsp;<span class="line-through text-red-500">&#8358;40,000</span>&nbsp;<span>&#8358;30,00</span>
-                                </p>
-                                <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
-                            </div>
-                        </div>
-                        <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
-                            <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
-                                <h2 class="text-sm tracking-widest title-font mb-1 font-medium">THIRD PLAN</h2>
-                                <h1 class="text-4xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                Quarterly
-                                </h1>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </span>Single: &nbsp;<span>&#8358;25,000</span>
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </span>Couple: &nbsp;<span class="line-through text-red-500">&#8358;50,000</span>&nbsp;<span>&#8358;45,000</span>
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </span>Family: &nbsp;<span class="line-through text-red-500">&#8358;100,000</span>&nbsp;<span>&#8358;75,00</span>
-                                </p>
-                                <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
-                            </div>
-                        </div>
-                        <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
-                            <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
-                                <h2 class="text-sm tracking-widest title-font mb-1 font-medium">FOURTH PLAN</h2>
-                                <h1 class="text-4xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                Semi Annual
-                                </h1>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </span>Single: &nbsp;<span>&#8358;48,000</span>
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </span>Couple: &nbsp;<span class="line-through text-red-500">&#8358;96,000</span>&nbsp;<span>&#8358;86,400</span>
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
-                                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
-                                    <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                </span>Family: &nbsp;<span class="line-through text-red-500">&#8358;192,000</span>&nbsp;<span>&#8358;144,000</span>
-                                </p>
-                                <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
-                            </div>
-                        </div>
-                        <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
-                            <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
-                                <h2 class="text-sm tracking-widest title-font mb-1 font-medium">FIFTH PLAN</h2>
-                                <h1 class="text-4xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
-                                    Annual
-                                </h1>
-                                <p class="flex items-center text-gray-600 mb-2">
+                                    </span>Couple: &nbsp;<span class="line-through text-red-500">&#8358;20,000</span>&nbsp;<span>&#8358;18,000</span>
+                                    </p>
+                                    <p class="flex items-center text-gray-600 mb-2">
                                     <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
                                         <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                    </span>Single: &nbsp;<span class="line-through text-red-500">&#8358;90,000</span>&nbsp;<span>&#8358;85,500</span>
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
+                                        </svg>
+                                    </span>Family: &nbsp;<span class="line-through text-red-500">&#8358;40,000</span>&nbsp;<span>&#8358;30,00</span>
+                                    </p>
+                                    <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
+                                </div>
+                            </div>
+                            <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
+                                <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+                                    <h2 class="text-sm tracking-widest title-font mb-1 font-medium">THIRD PLAN</h2>
+                                    <h1 class="text-4xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+                                    Quarterly
+                                    </h1>
+                                    <p class="flex items-center text-gray-600 mb-2">
                                     <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
                                         <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
-                                    </span>Couple: &nbsp;<span class="line-through text-red-500">&#8358;180,000</span>&nbsp;<span>&#8358;153,000</span>
-                                </p>
-                                <p class="flex items-center text-gray-600 mb-2">
+                                        </svg>
+                                    </span>Single: &nbsp;<span>&#8358;25,000</span>
+                                    </p>
+                                    <p class="flex items-center text-gray-600 mb-2">
                                     <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
                                         <path d="M20 6L9 17l-5-5"></path>
-                                    </svg>
+                                        </svg>
+                                    </span>Couple: &nbsp;<span class="line-through text-red-500">&#8358;50,000</span>&nbsp;<span>&#8358;45,000</span>
+                                    </p>
+                                    <p class="flex items-center text-gray-600 mb-2">
+                                    <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                        </svg>
+                                    </span>Family: &nbsp;<span class="line-through text-red-500">&#8358;100,000</span>&nbsp;<span>&#8358;75,00</span>
+                                    </p>
+                                    <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
+                                </div>
+                            </div>
+                            <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
+                                <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+                                    <h2 class="text-sm tracking-widest title-font mb-1 font-medium">FOURTH PLAN</h2>
+                                    <h1 class="text-4xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+                                    Semi Annual
+                                    </h1>
+                                    <p class="flex items-center text-gray-600 mb-2">
+                                    <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                        </svg>
+                                    </span>Single: &nbsp;<span>&#8358;48,000</span>
+                                    </p>
+                                    <p class="flex items-center text-gray-600 mb-2">
+                                    <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                        </svg>
+                                    </span>Couple: &nbsp;<span class="line-through text-red-500">&#8358;96,000</span>&nbsp;<span>&#8358;86,400</span>
+                                    </p>
+                                    <p class="flex items-center text-gray-600 mb-2">
+                                    <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                        <path d="M20 6L9 17l-5-5"></path>
+                                        </svg>
                                     </span>Family: &nbsp;<span class="line-through text-red-500">&#8358;192,000</span>&nbsp;<span>&#8358;144,000</span>
-                                </p>
-                                <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
+                                    </p>
+                                    <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
+                                </div>
                             </div>
+                            <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
+                                <div class="h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden">
+                                    <h2 class="text-sm tracking-widest title-font mb-1 font-medium">FIFTH PLAN</h2>
+                                    <h1 class="text-4xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
+                                        Annual
+                                    </h1>
+                                    <p class="flex items-center text-gray-600 mb-2">
+                                        <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                            <path d="M20 6L9 17l-5-5"></path>
+                                        </svg>
+                                        </span>Single: &nbsp;<span class="line-through text-red-500">&#8358;90,000</span>&nbsp;<span>&#8358;85,500</span>
+                                    </p>
+                                    <p class="flex items-center text-gray-600 mb-2">
+                                        <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                            <path d="M20 6L9 17l-5-5"></path>
+                                        </svg>
+                                        </span>Couple: &nbsp;<span class="line-through text-red-500">&#8358;180,000</span>&nbsp;<span>&#8358;153,000</span>
+                                    </p>
+                                    <p class="flex items-center text-gray-600 mb-2">
+                                        <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                                            <path d="M20 6L9 17l-5-5"></path>
+                                        </svg>
+                                        </span>Family: &nbsp;<span class="line-through text-red-500">&#8358;192,000</span>&nbsp;<span>&#8358;144,000</span>
+                                    </p>
+                                    <p class="text-xs text-gray-500 mt-3"><i class="fas fa-info-circle"></i> Terms and conditions apply for discounts.</p>
+                                </div>
+                            </div>-->
                         </div>
-                    </div>
+                    @else
+                        <p>No payment plans available.</p>
+                    @endif
                 </div>
             </section>
             <section id="schedule" class="text-gray-600 body-font overflow-hidden">
@@ -218,89 +238,33 @@
                         <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Schedules</h1>
                         <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500">Below are the different training schedules. </p>
                     </div>
-                    <div class="shadow-md p-3 rounded">
-                        <div class="flex flex-wrap p-2 text-green-900 bg-green-100">
-                            <div class="w-full md:w-1/3">
-                                <p class="text-sm font-bold">Monday</p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Body Tone/Aerobics <small class="text-xs font-bold">(M)</small></p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Tummy Blast <small class="text-xs font-bold">(E)</small></p>
-                            </div>
+                    @if (count($schedules) > 0)
+                        <div class="shadow-md p-3 rounded">
+                            @foreach ($schedules as $schedule)
+                                <div class="flex flex-wrap p-2 text-green-900 @if($loop->iteration % 2 == 0) bg-green-100 @else bg-green-200 @endif">
+                                    <div class="w-full md:w-1/3">
+                                        <p class="text-sm font-bold">{{ $schedule->day }}</p>
+                                    </div>
+                                    <div class="w-full md:w-1/3">
+                                        @if ($schedule->morning != '' || $schedule->morning != null)
+                                            <p>{{ $schedule->morning }} <small class="text-xs font-bold">(M)</small></p>
+                                        @endif
+                                    </div>
+                                    <div class="w-full md:w-1/3">
+                                        @if ($schedule->evening != '' || $schedule->evening != null)
+                                            <p>{{ $schedule->evening }} <small class="text-xs font-bold">(E)</small></p>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                            <p class="mt-3 text-green-900">
+                                M - Morning &nbsp;
+                                E - Evening
+                            </p>
                         </div>
-                        <div class="flex flex-wrap p-2 text-green-900 bg-green-200">
-                            <div class="w-full md:w-1/3">
-                                <p class="text-sm font-bold">Tuesday</p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Tummy Blast <small class="text-xs font-bold">(M)</small></p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Tabata <small class="text-xs font-bold">(E)</small></p>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap p-2 text-green-900 bg-green-100">
-                            <div class="w-full md:w-1/3">
-                                <p class="text-sm font-bold">Wednesday</p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Circuit Training <small class="text-xs font-bold">(M)</small></p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Body Tone/Aerobics <small class="text-xs font-bold">(E)</small></p>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap p-2 text-green-900 bg-green-200">
-                            <div class="w-full md:w-1/3">
-                                <p class="text-sm font-bold">Thursday</p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Tabata <small class="text-xs font-bold">(M)</small></p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Tummy Blast <small class="text-xs font-bold">(E)</small></p>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap p-2 text-green-900 bg-green-100">
-                            <div class="w-full md:w-1/3">
-                                <p class="text-sm font-bold">Friday</p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Tummy Blast <small class="text-xs font-bold">(M)</small></p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Circuit Training <small class="text-xs font-bold">(E)</small></p>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap p-2 text-green-900 bg-green-200">
-                            <div class="w-full md:w-1/3">
-                                <p class="text-sm font-bold">Saturday</p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Taebo Aerobics/Bootcamp <small class="text-xs font-bold">(M)</small></p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>All Cardio Workout <small class="text-xs font-bold">(E)</small></p>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap p-2 text-green-900 bg-green-100">
-                            <div class="w-full md:w-1/3">
-                                <p class="text-sm font-bold">Sunday</p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p></p>
-                            </div>
-                            <div class="w-full md:w-1/3">
-                                <p>Self Workout With Instructor's Supervision <small class="text-xs font-bold">(E)</small></p>
-                            </div>
-                        </div>
-                        <p class="mt-3 text-green-900">
-                            M - Morning &nbsp;
-                            E - Evening
-                        </p>
-                    </div>
+                    @else
+                        <p>No schedules specified.</p>
+                    @endif
                 </div>
             </section>
         </div>
