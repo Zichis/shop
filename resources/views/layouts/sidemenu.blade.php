@@ -9,6 +9,9 @@
         <a href="{{ route('admin.users.index') }}" class="p-2 block my-5 @if(Request::url() == route('admin.users.index')) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
             <i class="fas fa-users"></i>
         </a>
+        <a href="{{ route('admin.plans.index') }}" class="p-2 block my-5 @if(Request::url() == route('admin.plans.index')) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
+            <i class="fas fa-clipboard-list"></i>
+        </a>
         <hr class="border-gray-700">
         <a href="{{ route('customer.profile.index') }}" class="p-2 block my-5 @if(Request::url() == route('customer.profile.index') || Request::url() == route('customer.profile.edit', ['profile' => Auth::user()->profile->id])) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
             <i class="fas fa-user"></i>
