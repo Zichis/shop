@@ -18,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Auth::user()->orders()->where('status', 'complete')->get();
+        $orders = Auth::user()->orders()->where('status', '!=', 'pending')->get();
 
         return view('customer.order.index', [
             'orders' => $orders
