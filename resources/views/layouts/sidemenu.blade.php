@@ -9,6 +9,9 @@
         <a href="{{ route('admin.users.index') }}" class="p-2 block my-5 @if(Request::url() == route('admin.users.index')) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
             <i class="fas fa-users"></i>
         </a>
+        <a href="{{ route('admin.orders.index') }}" class="p-2 block my-5 @if(Request::url() == route('admin.orders.index')) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
+            <i class="fas fa-truck"></i>
+        </a>
         <a href="{{ route('admin.plans.index') }}" class="p-2 block my-5 @if(Request::url() == route('admin.plans.index')) text-yellow-500 @endif hover:text-yellow-600 focus:outline-none">
             <i class="fas fa-clipboard-list"></i>
         </a>
