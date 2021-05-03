@@ -12,7 +12,7 @@
                 <div class="bg-white border-l-4 border-yellow-400 p-10 relative shadow-sm">
                     <i class="fas fa-shopping-bag fa-3x absolute text-gray-100 right-5"></i>
                     <p class="text-gray-500">Orders</p>
-                    <h3 class="text-gray-700 text-xl font-bold">2</h3>
+                    <h3 class="text-gray-700 text-xl font-bold">{{ count($orders) }}</h3>
                 </div>
             </div>
             <div class="p-5 w-full md:w-1/2 lg:w-1/3">
