@@ -29,4 +29,17 @@ class CartController extends Controller
             'orders' => $orders
         ]);
     }
+
+    public function confirm()
+    {
+        $orders = Auth::user()->orders()->where('status', 'pending')->get();
+
+        foreach ($orders as $order) {
+            $order->update([
+                'status' => 'processing'
+            ]);
+        }
+
+        return redirect()->route('customer.cart.index');
+    }
 }
