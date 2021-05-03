@@ -19,14 +19,14 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'email' => 'johndoe@company.com',
+            'email' => 'admin@company.com',
             'password' => Hash::make('password')
         ]);
 
         $profile = Profile::create([
             'user_id' => $user->id,
-            'first_name' => 'John',
-            'last_name' => 'Doe',
+            'first_name' => 'admin',
+            'last_name' => 'admin',
             'phone_number' => '08012345678',
             'address' => '19 Crawford Avenue, Lagos'
         ]);
