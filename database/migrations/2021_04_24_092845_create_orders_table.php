@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('quantity');
             $table->string('total')->nullable();
             $table->boolean('paid')->default(false);
-            $table->string('status')->default('incomplete');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

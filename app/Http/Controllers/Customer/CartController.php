@@ -10,8 +10,8 @@ class CartController extends Controller
 {
     public function index()
     {
-        $orders = Auth::user()->orders()->where('status', 'incomplete')->get();
-        $sum = Auth::user()->orders()->where('status', 'incomplete')->sum('total');
+        $orders = Auth::user()->orders()->where('status', 'pending')->get();
+        $sum = Auth::user()->orders()->where('status', 'pending')->sum('total');
 
         return view('customer.cart.index', [
             'orders' => $orders,
@@ -21,8 +21,8 @@ class CartController extends Controller
 
     public function checkout()
     {
-        $orders = Auth::user()->orders()->where('status', 'incomplete')->count();
-        $sum = Auth::user()->orders()->where('status', 'incomplete')->sum('total');
+        $orders = Auth::user()->orders()->where('status', 'pending')->count();
+        $sum = Auth::user()->orders()->where('status', 'pending')->sum('total');
 
         return view('customer.cart.checkout', [
             'total' => $sum,

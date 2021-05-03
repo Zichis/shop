@@ -18,7 +18,7 @@ class ProductController extends Controller
         $products = Product::with(['images'])->get();
         $cartCount = 0;
         if (Auth::check()) {
-            $cartCount = Auth::user()->orders()->where('status', 'incomplete')->count();
+            $cartCount = Auth::user()->orders()->where('status', 'pending')->count();
         }
 
         return view('product.index', [
@@ -58,7 +58,7 @@ class ProductController extends Controller
     {
         $cartCount = 0;
         if (Auth::check()) {
-            $cartCount = Auth::user()->orders()->where('status', 'incomplete')->count();
+            $cartCount = Auth::user()->orders()->where('status', 'pending')->count();
         }
 
         return view('product.show', [
