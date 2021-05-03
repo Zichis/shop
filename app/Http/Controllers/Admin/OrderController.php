@@ -15,10 +15,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::where('status', 'processing')->get();
+        $pendingOrders = Order::where('status', 'processing')->get();
+        $orders = Order::where('status', 'complete')->paginate(20);
 
         return view('admin.order.index', [
-            'orders' => $orders
+            'orders' => $orders,
+            'pendingOrders' => $pendingOrders
         ]);
     }
 
