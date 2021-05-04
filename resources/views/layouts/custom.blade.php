@@ -26,7 +26,7 @@
                         <div class="flex">
                             <img src="{{ asset('images/company/default_company_logo.jpeg') }}" class="w-9 h-9 mr-2" alt="company logo">
                             <h1 class="text-2xl text-gray-200 font-bold">
-                                <a href="{{ route('home') }}">T & R Shop</a>
+                                <a href="{{ route('home') }}">{{ config('app.name', 'T & R SuperStore') }}</a>
                             </h1>
                         </div>
                         <div class="hidden md:block">
