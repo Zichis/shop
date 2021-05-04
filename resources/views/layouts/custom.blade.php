@@ -30,7 +30,9 @@
                             </h1>
                         </div>
                         <div class="hidden md:block">
-                            <input class="py-1 px-3 rounded-full w-72 focus:ring-transparent" type="text" name="search" id="search" placeholder="Search products...">
+                            <form action="{{ route('products.index') }}" method="GET">
+                                <input class="py-1 px-3 rounded-full w-72 focus:ring-transparent" type="text" name="productName" id="search" placeholder="Search products...">
+                            </form>
                         </div>
                         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <a href="{{ route('customer.cart.index') }}" class="relative bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">

@@ -1,6 +1,9 @@
 <x-custom-layout :cartCount="$cartCount">
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-14 mx-auto">
+            @if ($searchWord != '')
+                <p class="my-5">{{ count($products) }} items found for {{ $searchWord }}</p>
+            @endif
             <div class="flex flex-wrap -m-4">
                 @if (count($products) > 0)
                     @foreach ($products as $product)

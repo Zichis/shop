@@ -13,9 +13,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $products = Product::with(['images'])->get();
+        $searchWord = '';
+
+        if ($request->has('productName')) {
+            $searchWord = $request->productName;
+            $products = Product::where('name', 'LIKE', "%{$request->productName}%")->get();
+        }
+
         $cartCount = 0;
         if (Auth::check()) {
             $cartCount = Auth::user()->orders()->where('status', 'pending')->count();
@@ -23,7 +30,8 @@ class ProductController extends Controller
 
         return view('product.index', [
             'products' => $products,
-            'cartCount' => $cartCount
+            'cartCount' => $cartCount,
+            'searchWord' => $searchWord
         ]);
     }
 
