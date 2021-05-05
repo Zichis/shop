@@ -62,7 +62,7 @@ class PlanSeeder extends Seeder
                 'single_discount' => '5',
                 'couple_price' => '180000',
                 'couple_discount' => '15',
-                'family_price' => '192000',
+                'family_price' => '360000',
                 'family_discount' => '30'
             ]
         ]);
