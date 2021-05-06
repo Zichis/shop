@@ -31,6 +31,7 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+                <p class="my-3 text-gray-600">Don't have an account? Register <a href="{{ route('register') }}" class="text-yellow-500 font-bold hover:text-yellow-600">here</a>.</p>
             </form>
         </div>
 </x-guest-layout>
