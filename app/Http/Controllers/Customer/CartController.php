@@ -40,6 +40,6 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->route('customer.cart.index');
+        return redirect()->route('customer.cart.index')->with('success','Order sent successfully!');
     }
 }
