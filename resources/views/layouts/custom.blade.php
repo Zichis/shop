@@ -23,14 +23,12 @@
             <nav class="bg-gray-800">
                 <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                     <div class="relative flex items-center justify-between h-16">
-
-                            <a href="{{ route('home') }}" class="flex">
-                                <img src="{{ asset('images/company/default_company_logo.jpeg') }}" class="w-9 h-9 mr-2" alt="company logo">
-                                <h1 class="text-2xl text-gray-200 font-bold">
-                                    {{ config('app.name', 'T & R SuperStore') }}
-                                </h1>
-                            </a>
-
+                        <a href="{{ route('home') }}" class="flex">
+                            <img src="{{ asset('images/company/default_company_logo.jpeg') }}" class="w-9 h-9 mr-2" alt="company logo">
+                            <h1 class="text-2xl text-gray-200 font-bold">
+                                {{ config('app.name', 'T & R SuperStore') }}
+                            </h1>
+                        </a>
                         <div class="hidden md:block">
                             <form action="{{ route('products.index') }}" method="GET">
                                 <input class="py-1 px-3 rounded-full w-72 focus:ring-transparent" type="text" name="productName" id="search" placeholder="Search products...">
