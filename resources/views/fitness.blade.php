@@ -7,7 +7,7 @@
 
         <title>{{ config('app.name', 'T & R SuperStore') }}</title>
 
-        <link rel="icon" href="{{ asset('images/company/default_company_logo.jpeg') }}" sizes="16x16">
+        <link rel="icon" href="{{ asset('images/company/fitness_logo.png') }}" sizes="16x16">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -22,15 +22,18 @@
         <div class="min-h-screen bg-gray-100">
             <header class="text-gray-600 body-font">
                 <div class="container border-b mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-                  <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                    <span class="ml-3 text-xl">T & R Fitness</span>
-                  </a>
-                  <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-                    <a class="mr-5 hover:text-gray-900">Pricing</a>
-                    <a class="mr-5 hover:text-gray-900">Timetable</a>
-                    <a class="mr-5 hover:text-gray-900">Payment</a>
-                    <a href="{{ route('home') }}" class="mr-5 hover:text-gray-900">Shop</a>
-                  </nav>
+                    <a href="{{ route('home') }}" class="flex">
+                        <img src="{{ asset('images/company/fitness_logo.png') }}" class="w-16 h-9" alt="company logo">
+                        <h1 class="text-2xl text-gray-700 font-bold">
+                            T & R Fitness
+                        </h1>
+                    </a>
+                    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+                        <a class="mr-5 hover:text-gray-900">Pricing</a>
+                        <a class="mr-5 hover:text-gray-900">Timetable</a>
+                        <a class="mr-5 hover:text-gray-900">Payment</a>
+                        <a href="{{ route('home') }}" class="mr-5 hover:text-gray-900">Shop</a>
+                    </nav>
                 </div>
             </header>
             <section class="text-gray-600 body-font">
