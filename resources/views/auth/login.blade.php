@@ -1,5 +1,8 @@
 <x-guest-layout>
         <div class="flex flex-col h-full justify-center items-center p-5">
+            <a href="{{ route('home') }}" class="flex flex-col items-center">
+                <img src="{{ asset('images/company/default_company_logo.jpeg') }}" class="w-24 h-24" alt="company logo">
+            </a>
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
@@ -25,13 +28,16 @@
                         <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                     </label>
                 </div>
-                <button type="submit" class="px-3 py-1 text-white bg-gradient-to-t from-green-400 to-green-500 hover:shadow-md rounded shadow-sm focus:outline-none">Login</button>
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
+                <div class="flex justify-between items-center my-2">
+                    <button type="submit" class="px-3 py-1 text-white bg-gradient-to-t from-green-400 to-green-500 hover:shadow-md rounded shadow-sm focus:outline-none">Login</button>
+                    @if (Route::has('password.request'))
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                            {{ __('Forgot your password?') }}
+                        </a>
+                    @endif
+                </div>
                 <p class="my-3 text-gray-600">Don't have an account? Register <a href="{{ route('register') }}" class="text-yellow-500 font-bold hover:text-yellow-600">here</a>.</p>
+                <a href="{{ route('home') }}" class="text-gray-600 block text-center hover:text-gray-800"><i class="fas fa-home"></i> Home</a>
             </form>
         </div>
 </x-guest-layout>
