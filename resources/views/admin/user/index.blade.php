@@ -13,7 +13,7 @@
                 </thead>
                 <tbody>
                     @foreach ($customers as $customer)
-                        <tr class="@if($loop->iteration % 2 == 0) bg-gray-100 @endif">
+                        <tr class="{{ $loop->even ?'bg-gray-100':'' }}">
                             <td class="p-2">
                                 <a href="{{ route('admin.users.show', ['user' => $customer->id]) }}" class="text-gray-800 hover:text-gray-900">{{ $customer->fullName() }}</a>
                             </td>

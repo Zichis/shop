@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
-                        <tr class="@if($loop->iteration % 2 == 0) bg-gray-100 @endif">
+                        <tr class="{{ $loop->even ?'bg-gray-100':'' }}">
                             <td class="p-2">{{ $product->name }}</td>
                             <td class="p-2">{{ $product->price }}</td>
                             <td class="p-2">{{ $product->quantity }}</td>

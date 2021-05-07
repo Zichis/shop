@@ -64,7 +64,7 @@
                         <div class="flex flex-wrap justify-center -m-4">
                             @foreach ($plans as $plan)
                                 <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
-                                    <div class="h-full p-6 rounded-lg border-2 @if ($loop->iteration == 2) border-green-500 @else border-gray-300 @endif flex flex-col relative overflow-hidden">
+                                    <div class="h-full p-6 rounded-lg border-2 {{ $loop->iteration == 2 ? 'border-green-500':'border-gray-300' }}  flex flex-col relative overflow-hidden">
                                         @if ($loop->iteration == 2)
                                             <span class="bg-green-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
                                         @endif
@@ -246,7 +246,7 @@
                     @if (count($schedules) > 0)
                         <div class="shadow-md p-3 rounded">
                             @foreach ($schedules as $schedule)
-                                <div class="flex flex-wrap p-2 text-green-900 @if($loop->iteration % 2 == 0) bg-green-100 @else bg-green-200 @endif">
+                                <div class="flex flex-wrap p-2 text-green-900 {{ $loop->even ? 'bg-green-100':'bg-green-200' }}">
                                     <div class="w-full md:w-1/3">
                                         <p class="text-sm font-bold">{{ $schedule->day }}</p>
                                     </div>
