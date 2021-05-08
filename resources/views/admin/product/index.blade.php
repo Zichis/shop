@@ -1,5 +1,6 @@
 <x-dashboard-layout>
     <div class="px-10 py-5">
+        <x-product-group-link />
         <div class="p-5 bg-white shadow-lg rounded border border-gray-300">
             <div class="flex justify-between items-center mb-3">
                 <h2 class="text-2xl font-bold text-gray-700">Products</h2>
