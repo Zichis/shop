@@ -7,6 +7,7 @@ use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\PaymentController;
 use App\Http\Controllers\Customer\ProfileController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
@@ -39,6 +40,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::get('/orders/{order}/reject', [AdminOrderController::class, 'reject'])->name('orders.reject');
     Route::resource('fitness/plans', PlanController::class);
     Route::resource('products', AdminProductController::class);
+    Route::resource('categories', CategoryController::class);
     Route::resource('orders', AdminOrderController::class);
     Route::resource('users', UserController::class);
 });
