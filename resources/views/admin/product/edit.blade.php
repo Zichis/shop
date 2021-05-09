@@ -40,6 +40,14 @@
                             <span class="label-name text-gray-500">Price</span>
                         </label>
                     </div>
+                    <div class="material-form-control relative overflow-hidden my-4 h-12">
+                        <select name="category_id" id="category_id">
+                            <option value="">Select Category</option>
+                            @foreach ($categories as $category)
+                                <option {{ $product->category_id == $category->id ?'selected':'' }} value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <input type="file" name="image" id="image">
                     <div class="text-right">
                         <button type="submit" class="px-3 py-1 text-white bg-gradient-to-t from-green-400 to-green-500 hover:shadow-md rounded shadow-sm">Update</button>
