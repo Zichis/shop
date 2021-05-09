@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
 use File;
@@ -33,7 +34,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $categories = Category::all();
+
+        return view('admin.product.create', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -52,7 +57,8 @@ class ProductController extends Controller
             'name' => $validated['name'],
             'description' => $validated['description'],
             'quantity' => $validated['quantity'],
-            'price' => $validated['price']
+            'price' => $validated['price'],
+            'category_id' => $validated['category_id']
         ]);
 
         //$image->move(public_path('images/products', $imageName));
@@ -85,8 +91,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $categories = Category::all();
+
         return view('admin.product.edit', [
-            'product' => $product
+            'product' => $product,
+            'categories' => $categories
         ]);
     }
 
@@ -121,7 +130,8 @@ class ProductController extends Controller
             'name' => $validated['name'],
             'description' => $validated['description'],
             'quantity' => $validated['quantity'],
-            'price' => $validated['price']
+            'price' => $validated['price'],
+            'category_id' => $validated['category_id']
         ]);
 
         return redirect()->route('admin.products.index');
