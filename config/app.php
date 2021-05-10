@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Unicodeveloper\Paystack\PaystackServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 
@@ -230,6 +231,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+        'SweetAlert' => RealRashid\SweetAlert\Facades\Alert::class,
+
 
     ],
 
