@@ -12,8 +12,9 @@
                                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('images/products/' . $product->images[0]->name) }}">
                             </a>
                             <div class="mt-4">
+                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->category->name }}</h3>
                                 <a href="{{ route('products.show', ['product' => $product->id]) }}">
-                                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->name }}</h3>
+                                    <h2 class="text-gray-700 text-md tracking-widest title-font mb-1">{{ $product->name }}</h2>
                                 </a>
                                 <p class="mt-1">&#8358; {{ $product->price }}</p>
                             </div>

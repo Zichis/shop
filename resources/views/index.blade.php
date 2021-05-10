@@ -29,29 +29,57 @@
 
     <section class="text-gray-600 body-font">
         @if (count($products) > 0)
-            <div class="container px-5 py-14 mx-auto">
-                    <p class="my-2">Latest Items</p>
-                    <div class="flex flex-wrap -m-4">
-                        @foreach ($products as $product)
-                            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <a href="{{ route('products.show', ['product' => $product->id]) }}" class="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('images/products/' . $product->images[0]->name) }}">
+            <div class="container px-5 py-7 mx-auto">
+                <div class="flex justify-between items-center rounded bg-yellow-600 text-white mb-3 px-2 py-1">
+                    <p class="my-2">Latest</p>
+                    <a href="{{ route('products.index') }}" class="underline">View All</a>
+                </div>
+                <div class="flex flex-wrap -m-4">
+                    @foreach ($products as $product)
+                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                            <a href="{{ route('products.show', ['product' => $product->id]) }}" class="block relative h-48 rounded overflow-hidden">
+                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('images/products/' . $product->images[0]->name) }}">
+                            </a>
+                            <div class="mt-4">
+                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->category->name }}</h3>
+                                <a href="{{ route('products.show', ['product' => $product->id]) }}">
+                                    <h2 class="text-gray-700 text-md tracking-widest title-font mb-1">{{ $product->name }}</h2>
                                 </a>
-                                <div class="mt-4">
-                                    <a href="{{ route('products.show', ['product' => $product->id]) }}">
-                                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->name }}</h3>
-                                    </a>
-                                    <p class="mt-1">{{ $product->price }}</p>
-                                </div>
+                                <p class="mt-1">{{ $product->price }}</p>
                             </div>
-                        @endforeach
-                    </div>
-            </div>
-            <div class="my-3 p-5 text-center">
-                <a href="{{ route('products.index') }}" class="p-3 border-2 border-yellow-600 font-bold text-yellow-600 hover:bg-yellow-600 hover:text-white">View more</a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         @else
             <p class="m-5 text-center">No items</p>
         @endif
+
+        <div class="container px-5 py-7 mx-auto">
+            @foreach ($categories as $category)
+                @if (count($category->products) > 0)
+                    <div class="flex justify-between items-center rounded bg-yellow-600 text-white mb-3 px-2 py-1">
+                        <p class="my-2">{{ $category->name }}</p>
+                        <a href="{{ route('products.index') }}" class="underline">View All</a>
+                    </div>
+                @endif
+                <div class="flex flex-wrap -m-4">
+                    @foreach ($category->products as $product)
+                        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                            <a href="{{ route('products.show', ['product' => $product->id]) }}" class="block relative h-48 rounded overflow-hidden">
+                                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ asset('images/products/' . $product->images[0]->name) }}">
+                            </a>
+                            <div class="mt-4 mb-4">
+                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->category->name }}</h3>
+                                <a href="{{ route('products.show', ['product' => $product->id]) }}">
+                                    <h2 class="text-gray-700 text-md tracking-widest title-font mb-1">{{ $product->name }}</h2>
+                                </a>
+                                <p class="mt-1">{{ $product->price }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        </div>
     </section>
 </x-custom-layout>
