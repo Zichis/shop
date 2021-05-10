@@ -29,11 +29,7 @@
                 @endhasrole
                 <div class="bg-gray-200 pl-14 h-screen overflow-y-scroll w-full">
                     @include('layouts.dashboardHeader')
-                    @if ($message = Session::get('success'))
-                        <div id="successFlash" class="flex justify-between items-center p-3 m-5 rounded bg-green-500 text-white">
-                            <strong>{{ $message }}</strong>
-                        </div>
-                    @endif
+                    @include('sweetalert::alert')
                     <div>{{ $slot }}</div>
                 </div>
             </div>
