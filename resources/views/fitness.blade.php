@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'T & R SuperStore') }}</title>
+        <title>T & R - Fitness</title>
 
         <link rel="icon" href="{{ asset('images/company/fitness_logo.png') }}" sizes="16x16">
 
@@ -25,7 +25,7 @@
                     <a href="{{ route('home') }}" class="flex">
                         <img src="{{ asset('images/company/fitness_logo.png') }}" class="w-16 h-9" alt="company logo">
                         <h1 class="text-2xl text-gray-700 font-bold">
-                            T & R Fitness
+                            T & R - Fitness
                         </h1>
                     </a>
                     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
