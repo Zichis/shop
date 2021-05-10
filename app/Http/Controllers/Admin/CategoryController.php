@@ -48,6 +48,8 @@ class CategoryController extends Controller
             'name' => $validatedData['name']
         ]);
 
+        toast('Category Created!','success');
+
         return redirect()->route('admin.categories.index');
     }
 

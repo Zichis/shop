@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use File;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -68,6 +69,8 @@ class ProductController extends Controller
             'name' => time() . '_' . $image->getClientOriginalName(),
             'product_id' => $product->id
         ]);
+
+        toast('Product Added!','success');
 
         return redirect()->route('admin.products.index');
     }
@@ -133,6 +136,8 @@ class ProductController extends Controller
             'price' => $validated['price'],
             'category_id' => $validated['category_id']
         ]);
+
+        toast('Product Updated!','success');
 
         return redirect()->route('admin.products.index');
     }

@@ -99,6 +99,8 @@ class ProfileController extends Controller
             'phone_number' => $validated['phone_number']
         ]);
 
+        toast('Profile Updated!','success');
+
         return redirect()->route('customer.profile.index');
     }
 
