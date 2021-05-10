@@ -24,6 +24,7 @@
         </style>
     </head>
     <body>
+        @include('sweetalert::alert')
         <div class="h-full font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>

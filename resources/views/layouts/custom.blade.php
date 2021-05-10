@@ -76,6 +76,7 @@
                     <input class="py-1 px-3 rounded-full w-full focus:ring-transparent" type="text" name="search" id="search" placeholder="Search products...">
                 </div>
             </nav>
+            @include('sweetalert::alert')
             {{ $slot }}
         </div>
     </body>
