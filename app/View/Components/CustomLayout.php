@@ -8,7 +8,7 @@ class CustomLayout extends Component
 {
     public $cartCount;
 
-    public function __construct($cartCount)
+    public function __construct($cartCount = 0)
     {
         $this->cartCount = $cartCount;
     }
