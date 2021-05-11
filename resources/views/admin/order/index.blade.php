@@ -24,7 +24,7 @@
                     </div>
                     <div class="flex-1">
                         <a href="{{ route('admin.orders.confirm', ['order' => $order->id]) }}" class="py-1 px-3 bg-green-500 text-white rounded hover:bg-green-600">Confirm</a>&nbsp;
-                        <a href="{{ route('admin.orders.reject', ['order' => $order->id]) }}" class="py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600">Reject</a>
+                        <a href="{{ route('admin.orders.reject', ['order' => $order->id]) }}" class="py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600">Cancel</a>
                     </div>
                 </div>
             @endforeach
