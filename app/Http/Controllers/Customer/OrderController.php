@@ -47,7 +47,18 @@ class OrderController extends Controller
         $existingOrder = Order::where(['product_id' => $product->id, 'status' => 'pending'])->first();
 
         if ($existingOrder) {
-            return redirect()->back()->with('error', 'You have this item in your cart.');
+            toast('You have this item in your cart!','error')->width('20rem')->position('top');
+            return redirect()->back();
+        }
+
+        if ($product->quantity == 0) {
+            toast('Item out of stock!','error')->width('20rem')->position('top');
+            return redirect()->back();
+        }
+
+        if ($request->quantity > $product->quantity) {
+            toast('Items in stock less than quantity','error')->width('20rem')->position('top');
+            return redirect()->back();
         }
 
         $validated = $request->validated();
@@ -59,6 +70,11 @@ class OrderController extends Controller
             'product_price' => $product->price,
             'quantity' => $request->quantity,
             'total' => strval($request->quantity * $product->price)
+        ]);
+
+        $product = Product::find($request->product_id);
+        $product->update([
+            'quantity' => intval($product->quantity - $request->quantity)
         ]);
 
         toast('Order added!','success')->width('20rem')->position('top');
