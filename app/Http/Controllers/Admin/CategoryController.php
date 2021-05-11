@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -67,24 +68,37 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', Rule::unique('categories')->ignore($category)]
+            //Rule::unique('users')->ignore(Auth::user())
+        ]);
+
+        $category->update([
+            'name' => $validatedData['name']
+        ]);
+
+        toast('Category Updated!','success');
+
+        return redirect()->route('admin.categories.index');
     }
 
     /**

@@ -20,7 +20,7 @@
                         <tr class="{{ $loop->even ?'bg-gray-100':'' }}">
                             <td class="p-2">{{ $category->name }}</td>
                             <td class="p-2">
-                                <a class="mx-2 text-gray-600 hover:text-gray-800" href="#"><i class="fas fa-edit"></i></a>
+                                <a class="mx-2 text-gray-600 hover:text-gray-800" href="{{ route('admin.categories.edit', ['category' => $category->id]) }}"><i class="fas fa-edit"></i></a>
                                 <a class="mx-2 text-red-600 hover:text-red-800" href="#"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
