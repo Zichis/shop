@@ -70,7 +70,7 @@ class ProductController extends Controller
             'product_id' => $product->id
         ]);
 
-        toast('Product Added!','success');
+        toast('Product Added!','success')->width('20rem')->position('top');
 
         return redirect()->route('admin.products.index');
     }
@@ -137,7 +137,7 @@ class ProductController extends Controller
             'category_id' => $validated['category_id']
         ]);
 
-        toast('Product Updated!','success');
+        toast('Product Updated!','success')->width('20rem')->position('top');
 
         return redirect()->route('admin.products.index');
     }

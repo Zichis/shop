@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        toast('You are logged in!','success');
+        toast('You are logged in!','success')->width('20rem')->position('top');
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -51,7 +51,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        toast('You are logged out!','success');
+        toast('You are logged out!','success')->width('20rem')->position('top');
 
         return redirect('/');
     }

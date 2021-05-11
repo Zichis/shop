@@ -61,7 +61,7 @@ class OrderController extends Controller
             'total' => strval($request->quantity * $product->price)
         ]);
 
-        toast('Order added!','success');
+        toast('Order added!','success')->width('20rem')->position('top');
 
         return redirect()->route('products.index');
     }

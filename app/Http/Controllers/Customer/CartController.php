@@ -40,7 +40,7 @@ class CartController extends Controller
             ]);
         }
 
-        toast('Order sent successfully!','success');
+        toast('Order sent successfully!','success')->width('20rem')->position('top');
 
         return redirect()->route('customer.cart.index');
     }

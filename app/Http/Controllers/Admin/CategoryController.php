@@ -49,7 +49,7 @@ class CategoryController extends Controller
             'name' => $validatedData['name']
         ]);
 
-        toast('Category Created!','success');
+        toast('Category Created!','success')->width('20rem')->position('top');
 
         return redirect()->route('admin.categories.index');
     }
@@ -96,7 +96,7 @@ class CategoryController extends Controller
             'name' => $validatedData['name']
         ]);
 
-        toast('Category Updated!','success');
+        toast('Category Updated!','success')->width('20rem')->position('top');
 
         return redirect()->route('admin.categories.index');
     }

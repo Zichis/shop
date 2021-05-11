@@ -98,7 +98,7 @@ class PlanController extends Controller
             'family_discount' => $request->family_discount
         ]);
 
-        toast('Plans Updated!','success');
+        toast('Plans Updated!','success')->width('20rem')->position('top');
 
         return redirect()->route('admin.plans.index');
     }

@@ -105,7 +105,7 @@ class OrderController extends Controller
             'status' => 'pending'
         ]);
 
-        toast('You successfully cancelled order!','success');
+        toast('You successfully cancelled order!','success')->width('20rem')->position('top');
 
         return redirect()->route('admin.orders.index');
     }
