@@ -4,6 +4,7 @@
             <div class="flex px-3 py-5 bg-yellow-600 text-white font-bold">
                 <div class="flex-1">Name</div>
                 <div class="flex-1">Unit Price</div>
+                <div class="flex-1">Quantity</div>
                 <div class="flex-1">Status</div>
                 <div class="flex-1">Total</div>
             </div>
@@ -14,6 +15,9 @@
                     </div>
                     <div class="flex-1">
                         &#8358;{{ $order->product_price }}
+                    </div>
+                    <div class="flex-1">
+                        {{ $order->quantity }}
                     </div>
                     <div class="flex-1">
                         {{ $order->status }}
