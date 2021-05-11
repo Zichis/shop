@@ -18,6 +18,10 @@
                         <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                             Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
                         </p>
+                        <div class="flex gap-2 mt-5">
+                            <a href="{{ route('contact') }}" class="inline-flex py-2 px-6 rounded bg-green-500 text-white text-lg hover:bg-green-600">Contact</a>&nbsp;&nbsp;
+                            <a href="{{ route('fitness') }}" class="inline-flex py-2 px-6 rounded border border-gray-600 text-gray-600 text-lg hover:bg-gray-600 hover:text-white">Fitness</a>
+                        </div>
                     </div>
                 </main>
             </div>

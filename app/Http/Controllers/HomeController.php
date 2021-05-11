@@ -29,4 +29,9 @@ class HomeController extends Controller
             'cartCount' => $cartCount
         ]);
     }
+
+    public function contact()
+    {
+        return view('contact');
+    }
 }
