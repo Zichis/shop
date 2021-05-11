@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -96,6 +97,8 @@ class OrderController extends Controller
             'status' => 'complete'
         ]);
 
+        toast('Order Confirmed!','success')->width('20rem')->position('top');
+
         return redirect()->route('admin.orders.index');
     }
 
@@ -103,6 +106,11 @@ class OrderController extends Controller
     {
         $order->update([
             'status' => 'pending'
+        ]);
+
+        $product = Product::find($order->product_id);
+        $product->update([
+            'quantity' => intval($product->quantity + $order->quantity)
         ]);
 
         toast('You successfully cancelled order!','success')->width('20rem')->position('top');
