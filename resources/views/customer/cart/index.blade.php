@@ -29,6 +29,7 @@
                     </div>
                     <div class="flex-1">
                         <a href="{{ route('customer.orders.confirm', ['order' => $order->id]) }}" class="py-1 px-2 font-bold bg-yellow-600 text-yellow-50 hover:bg-yellow-500 hover:text-white">Confirm</a>
+                        <a href="{{ route('customer.orders.edit', ['order' => $order->id]) }}" class="bg-blue-600 text-blue-50 py-1 px-2 hover:bg-blue-500 hover:text-white">Update</a>
                     </div>
                 </div>
             @endforeach

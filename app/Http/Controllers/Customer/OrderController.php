@@ -100,19 +100,45 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        $product = Product::findOrFail($order->product_id);
+
+        return view('customer.order.edit', [
+            'order' => $order,
+            'product' => $product
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  MakeOrderRequest  $request
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(MakeOrderRequest $request, Order $order)
     {
-        //
+        $product = Product::findOrfail($request->product_id);
+
+        if ($product->quantity == 0) {
+            toast('Item out of stock!','error')->width('20rem')->position('top');
+            return redirect()->back();
+        }
+
+        if ($request->quantity > $product->quantity) {
+            toast('Items in stock less than quantity','error')->width('20rem')->position('top');
+            return redirect()->back();
+        }
+
+        $validated = $request->validated();
+
+        $order->update([
+            'quantity' => $request->quantity,
+            'total' => strval($request->quantity * $product->price)
+        ]);
+
+        toast('Order Updated!','success')->width('20rem')->position('top');
+
+        return redirect()->route('customer.cart.index');
     }
 
     /**
