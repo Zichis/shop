@@ -44,7 +44,11 @@ class OrderController extends Controller
     public function store(MakeOrderRequest $request)
     {
         $product = Product::findOrfail($request->product_id);
-        $existingOrder = Order::where(['product_id' => $product->id, 'status' => 'pending'])->first();
+        $existingOrder = Order::where([
+            'product_id' => $product->id,
+            'status' => 'pending',
+            'user_id' => Auth::user()->id
+        ])->first();
 
         if ($existingOrder) {
             toast('You have this item in your cart!','error')->width('20rem')->position('top');
