@@ -15,15 +15,19 @@
                         <p class="my-2 leading-relaxed">{{ $product->description }}</p>
                         <p class="my-2 title-font font-medium text-2xl text-gray-900">&#8358; {{ $product->price }}</p>
                         <p class="my-4">
-                            <label for="quantity" class="md:mr-2">Quantity</label>
-                            <select class="focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-300" name="quantity" id="quantity">
-                                @for ($i = 1; $i <= $product->quantity; $i++)
-                                    <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor
-                            </select>
+                            @if ($product->quantity > 0)
+                                <label for="quantity" class="md:mr-2">Quantity</label>
+                                <select class="focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-300" name="quantity" id="quantity">
+                                    @for ($i = 1; $i <= $product->quantity; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+                            @else
+                                <p class="text-red-500 font-bold my-2">Out of stock</p>
+                            @endif
                         </p>
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <button class="py-2 px-4 border border-yellow-600 font-bold text-yellow-600 hover:bg-yellow-600 hover:text-white">
+                        <button {{ $product->quantity < 1 ?'disabled':'' }} class="py-2 px-4 border border-yellow-600 font-bold text-yellow-600 hover:bg-yellow-600 hover:text-white">
                             <i class="fas fa-cart-plus"></i> Add
                         </button>
                         <div class="mt-5">
