@@ -7,30 +7,32 @@
                     Add
                 </a>--}}
             </div>
-            <table class="table-auto w-full text-left whitespace-no-wrap">
-                <thead class="p-5 shadow-lg bg-yellow-600 text-white">
-                    <tr>
-                        <th class="p-2 rounded-tl rounded-bl">Name</th>
-                        <th class="p-2 hidden lg:table-cell">Single</th>
-                        <th class="p-2 hidden lg:table-cell">Couple</th>
-                        <th class="p-2 hidden lg:table-cell">Family</th>
-                        <th class="p-2 rounded-tr rounded-br">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($plans as $plan)
-                        <tr class="{{ $loop->even ?'bg-gray-100':'' }}">
-                            <td class="p-2">{{ $plan->name }}</td>
-                            <td class="p-2 hidden lg:table-cell">&#8358;{{ $plan->single_price }}</td>
-                            <td class="p-2 hidden lg:table-cell">&#8358;{{ $plan->couple_price }}</td>
-                            <td class="p-2 hidden lg:table-cell">&#8358;{{ $plan->family_price }}</td>
-                            <td class="p-2">
-                                <a class="mx-2 text-gray-600 hover:text-gray-800" href="{{ route('admin.plans.edit', ['plan' => $plan->id]) }}"><i class="fas fa-edit"></i></a>
-                            </td>
+            <div class="overflow-x-scroll">
+                <table class="table-auto w-full text-left whitespace-no-wrap">
+                    <thead class="p-5 shadow-lg bg-yellow-600 text-white">
+                        <tr>
+                            <th class="p-2 rounded-tl rounded-bl">Name</th>
+                            <th class="p-2 hidden lg:table-cell">Single</th>
+                            <th class="p-2 hidden lg:table-cell">Couple</th>
+                            <th class="p-2 hidden lg:table-cell">Family</th>
+                            <th class="p-2 rounded-tr rounded-br">Actions</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($plans as $plan)
+                            <tr class="{{ $loop->even ?'bg-gray-100':'' }}">
+                                <td class="p-2">{{ $plan->name }}</td>
+                                <td class="p-2 hidden lg:table-cell">&#8358;{{ $plan->single_price }}</td>
+                                <td class="p-2 hidden lg:table-cell">&#8358;{{ $plan->couple_price }}</td>
+                                <td class="p-2 hidden lg:table-cell">&#8358;{{ $plan->family_price }}</td>
+                                <td class="p-2">
+                                    <a class="mx-2 text-gray-600 hover:text-gray-800" href="{{ route('admin.plans.edit', ['plan' => $plan->id]) }}"><i class="fas fa-edit"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </x-dashboard-layout>

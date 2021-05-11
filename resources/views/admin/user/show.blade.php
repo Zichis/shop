@@ -29,22 +29,24 @@
                     <h2 class="text-2xl font-bold text-gray-700">Orders</h2>
                 </div>
                 @if ($user->orders->isNotEmpty())
-                    <table class="table-auto w-full text-left whitespace-no-wrap">
-                        <thead class="p-5 shadow-lg bg-yellow-600 text-white">
-                            <tr>
-                                <th class="p-2 rounded-tl rounded-bl">Name</th>
-                                <th class="p-2 rounded-tr rounded-br">Orders</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($user->orders as $order)
-                                <tr class="{{ $loop->even ?'bg-gray-100':'' }}">
-                                    <td class="p-2">{{ $order->product_name }}</td>
-                                    <td class="p-2">{{ $order->status }}</td>
+                    <div class="overflow-x-scroll">
+                        <table class="table-auto w-full text-left whitespace-no-wrap">
+                            <thead class="p-5 shadow-lg bg-yellow-600 text-white">
+                                <tr>
+                                    <th class="p-2 rounded-tl rounded-bl">Name</th>
+                                    <th class="p-2 rounded-tr rounded-br">Orders</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($user->orders as $order)
+                                    <tr class="{{ $loop->even ?'bg-gray-100':'' }}">
+                                        <td class="p-2">{{ $order->product_name }}</td>
+                                        <td class="p-2">{{ $order->status }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @else
                     <p class="p-5">Customer has no orders.</p>
                 @endif
