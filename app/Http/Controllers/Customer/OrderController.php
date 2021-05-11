@@ -72,11 +72,6 @@ class OrderController extends Controller
             'total' => strval($request->quantity * $product->price)
         ]);
 
-        $product = Product::find($request->product_id);
-        $product->update([
-            'quantity' => intval($product->quantity - $request->quantity)
-        ]);
-
         toast('Order added!','success')->width('20rem')->position('top');
 
         return redirect()->route('products.index');
@@ -125,5 +120,32 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function confirm(Request $request, Order $order)
+    {
+        $product = Product::findOrfail($order->product_id);
+
+        if ($product->quantity == 0) {
+            toast('Item out of stock!','error')->width('20rem')->position('top');
+            return redirect()->back();
+        }
+
+        if ($order->quantity > $product->quantity) {
+            toast('Items in stock less than quantity','error')->width('20rem')->position('top');
+            return redirect()->back();
+        }
+
+        $order->update([
+            'status' => 'processing'
+        ]);
+
+        $product->update([
+            'quantity' => intval($product->quantity - $order->quantity)
+        ]);
+
+        toast('Order sent successfully!','success')->width('20rem')->position('top');
+
+        return redirect()->route('customer.cart.index');
     }
 }
