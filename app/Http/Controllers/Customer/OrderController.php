@@ -76,7 +76,13 @@ class OrderController extends Controller
             'total' => strval($request->quantity * $product->price)
         ]);
 
-        toast('Order added!','success')->width('20rem')->position('top');
+        //toast('Order added!','success')->width('20rem')->position('top');
+        $cartRoute = "customers.cart.index";
+        alert()->html(
+            "<h2 class='font-bold text-xl'>Item Added</h2>",
+            '<a href="" class="bg-yellow-500 text-white py-2 px-3 rounded">Continue Shopping</a>&nbsp;<a href="/customer/cart" class="bg-green-500 text-white py-2 px-3 rounded">Proceed to Cart</a>',
+            'success'
+        )->autoClose(30000)->persistent(false, false);
 
         return redirect()->route('products.index');
     }
