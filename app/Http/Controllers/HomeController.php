@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Information;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ class HomeController extends Controller
     {
         $products = Product::with(['images'])->orderBy('created_at','DESC')->take(5)->get();
         $categories = Category::take(10)->get();
+        $information = Information::first();
         $cartCount = 0;
         if (Auth::check()) {
             $cartCount = Auth::user()->orders()->where('status', 'pending')->count();
@@ -26,7 +28,8 @@ class HomeController extends Controller
         return view('index', [
             'products' => $products,
             'categories' => $categories,
-            'cartCount' => $cartCount
+            'cartCount' => $cartCount,
+            'information' => $information
         ]);
     }
 
