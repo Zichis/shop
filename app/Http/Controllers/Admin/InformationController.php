@@ -74,7 +74,14 @@ class InformationController extends Controller
      */
     public function update(Request $request, Information $information)
     {
-        //
+        $information->update([
+            'shop_banner' => $request->shop_banner,
+            'fitness_banner' => $request->fitness_banner
+        ]);
+
+        toast('Information Updated!','success')->width('20rem')->position('top');
+
+        return redirect()->route('admin.information.index');
     }
 
     /**
