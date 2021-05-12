@@ -9,6 +9,7 @@ use App\Http\Controllers\Customer\PaymentController;
 use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\UserController;
@@ -44,6 +45,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('categories', CategoryController::class);
     Route::resource('orders', AdminOrderController::class);
     Route::resource('users', UserController::class);
+    Route::resource('information', InformationController::class);
 });
 
 Route::middleware(['auth'])->name('customer.')->prefix('customer')->group(function () {
