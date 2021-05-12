@@ -42,7 +42,9 @@
                         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Best Trainings
                             <br class="hidden lg:inline-block">For You
                         </h1>
-                        <p class="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
+                        <p class="mb-8 leading-relaxed">
+                            {{ $information->fitness_banner != '' ?$information->fitness_banner:'Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.' }}
+                        </p>
                         <div class="flex gap-3 justify-center">
                             <a href="#plans" class="inline-flex py-2 px-6 rounded bg-green-500 text-white text-lg hover:bg-green-600">Pricing</a>
                             <a href="#schedule" class="inline-flex py-2 px-6 rounded border border-gray-600 text-gray-600 text-lg hover:bg-gray-600 hover:text-white">Schedule</a>
