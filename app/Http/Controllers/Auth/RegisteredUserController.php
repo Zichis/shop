@@ -59,6 +59,6 @@ class RegisteredUserController extends Controller
 
         toast('Registration successfully!','success')->width('20rem')->position('top');
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }
