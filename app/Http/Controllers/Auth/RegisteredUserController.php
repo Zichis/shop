@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\AccountCreated;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -56,6 +57,8 @@ class RegisteredUserController extends Controller
         $user->assignRole('ROLE_CUSTOMER');
 
         event(new Registered($user));
+
+        $user->notify(new AccountCreated($user));
 
         toast('Registration successfully!','success')->width('20rem')->position('top');
 
