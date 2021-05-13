@@ -29,10 +29,12 @@
                         </h1>
                     </a>
                     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-                        <a class="mr-5 hover:text-gray-900">Pricing</a>
-                        <a class="mr-5 hover:text-gray-900">Timetable</a>
-                        <a class="mr-5 hover:text-gray-900">Payment</a>
-                        <a href="{{ route('home') }}" class="mr-5 hover:text-gray-900">Shop</a>
+                        <a class="mr-3 hover:text-gray-900">Pricing</a>
+                        <a class="mr-3 hover:text-gray-900">Timetable</a>
+                        <a class="mr-3 hover:text-gray-900">Payment</a>
+                        <a href="{{ route('home') }}" class="bg-yellow-600 text-white px-3 py-2 shadow-lg mr-5 transform -rotate-6 hover:bg-yellow-700">
+                            <i class="fas fa-shopping-cart"></i> Shop
+                        </a>
                     </nav>
                 </div>
             </header>
