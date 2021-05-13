@@ -7,10 +7,12 @@ use Illuminate\View\Component;
 class CustomLayout extends Component
 {
     public $cartCount;
+    public $searchWord;
 
-    public function __construct($cartCount = 0)
+    public function __construct($cartCount = 0, $searchWord = '')
     {
         $this->cartCount = $cartCount;
+        $this->searchWord = $searchWord;
     }
 
     /**

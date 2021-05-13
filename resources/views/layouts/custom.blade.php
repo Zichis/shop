@@ -29,9 +29,10 @@
                                 {{ config('app.name', 'T & R SuperStore') }}
                             </h1>
                         </a>
-                        <div class="hidden md:block">
+                        <div class="hidden md:flex md:items-center">
                             <form action="{{ route('products.index') }}" method="GET">
-                                <input class="py-1 px-3 rounded-full w-72 focus:ring-transparent" type="text" name="productName" id="search" placeholder="Search products...">
+                                <input class="py-1 px-3 rounded-full w-72 focus:ring-transparent" type="text" name="productName" id="search" value="{{ $searchWord }}" placeholder="Search products...">
+                                <button class="bg-yellow-600 text-white rounded-full p-1 font-bold">GO</button>
                             </form>
                         </div>
                         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -73,7 +74,10 @@
                     </div>
                 </div>
                 <div class="block p-2 md:hidden">
-                    <input class="py-1 px-3 rounded-full w-full focus:ring-transparent" type="text" name="search" id="search" placeholder="Search products...">
+                    <form class="flex" action="{{ route('products.index') }}" method="GET">
+                        <input class="py-1 px-3 mr-1 rounded-full flex-1 focus:ring-transparent" type="text" name="productName" id="search" value="{{ $searchWord }}" placeholder="Search products...">
+                        <button class="bg-yellow-600 text-white rounded-full p-1 font-bold">GO</button>
+                    </form>
                 </div>
             </nav>
             @include('sweetalert::alert')

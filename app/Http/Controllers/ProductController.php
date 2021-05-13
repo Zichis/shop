@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,11 +17,18 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::with(['images'])->get();
+        $categories = Category::take(10)->get();
         $searchWord = '';
+        $selectedCategory = null;
 
         if ($request->has('productName')) {
             $searchWord = $request->productName;
             $products = Product::where('name', 'LIKE', "%{$request->productName}%")->get();
+        }
+
+        if ($request->has('category')) {
+            $selectedCategory = Category::where('name',$request->category)->firstOrFail();
+            $products = $selectedCategory->products;
         }
 
         $cartCount = 0;
@@ -30,8 +38,10 @@ class ProductController extends Controller
 
         return view('product.index', [
             'products' => $products,
+            'categories' => $categories,
             'cartCount' => $cartCount,
-            'searchWord' => $searchWord
+            'searchWord' => $searchWord,
+            'selectedCategory' => $selectedCategory
         ]);
     }
 
