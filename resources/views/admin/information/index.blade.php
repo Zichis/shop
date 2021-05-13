@@ -16,6 +16,9 @@
                             </ul>
                         </div>
                     @endif
+                    <p class="font-bold text-yellow-600">
+                        Change the paragraphs in the front page for shop and fitness.
+                    </p>
                     <div class="my-4">
                         <label class="text-gray-500 text-sm font-bold" for="shop_banner">Shop Banner</label>
                         <textarea class="w-full resize-none border-2 border-gray-400 focus:border-yellow-500 focus:ring-0" rows="5" name="shop_banner">{{ $information->shop_banner }}</textarea>
