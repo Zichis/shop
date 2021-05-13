@@ -22,12 +22,13 @@ class ProductController extends Controller
         $selectedCategory = null;
 
         if ($request->has('productName')) {
-            $searchWord = $request->productName;
-            $products = Product::where('name', 'LIKE', "%{$request->productName}%")->get();
+            $searchWord = ctype_alpha($request->productName) ?$request->productName:'';
+            $products = Product::where('name', 'LIKE', "%{$searchWord}%")->get();
         }
 
         if ($request->has('category')) {
-            $selectedCategory = Category::where('name',$request->category)->firstOrFail();
+            $categoryName = ctype_alpha($request->category) ?$request->category:'';
+            $selectedCategory = Category::where('name',$categoryName)->firstOrFail();
             $products = $selectedCategory->products;
         }
 
