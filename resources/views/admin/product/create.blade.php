@@ -6,6 +6,12 @@
                 <h3 class="font-bold p-5 text-gray-700">Add Product</h3>
                 <hr>
                 <div class="p-5">
+                    @if (count($categories) < 1)
+                        <div class="flex py-1 px-2 items-center bg-yellow-100 border-2 text-yellow-700 border-yellow-500">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p class="px-3">You have not added any categories. Products will not be categorized. Add category <a href="{{ route('admin.categories.create') }}" class="font-bold underline">here</a>.</p>
+                        </div>
+                    @endif
                     @if (count($errors) > 0)
                         <div class="error">
                             <ul>

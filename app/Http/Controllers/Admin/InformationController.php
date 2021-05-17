@@ -74,9 +74,14 @@ class InformationController extends Controller
      */
     public function update(Request $request, Information $information)
     {
+        $validatedData = $request->validate([
+            'shop_banner' => ['required'],
+            'fitness_banner' => ['required']
+        ]);
+
         $information->update([
-            'shop_banner' => $request->shop_banner,
-            'fitness_banner' => $request->fitness_banner
+            'shop_banner' => $validatedData['shop_banner'],
+            'fitness_banner' => $validatedData['fitness_banner']
         ]);
 
         toast('Information Updated!','success')->width('20rem')->position('top');
