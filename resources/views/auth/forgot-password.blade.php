@@ -1,8 +1,8 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <a href="{{ route('home') }}" class="flex flex-col items-center">
+                <img src="{{ asset('images/company/default_company_logo.jpeg') }}" class="w-24 h-24" alt="company logo">
             </a>
         </x-slot>
 
@@ -20,10 +20,11 @@
             @csrf
 
             <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="material-form-control relative overflow-hidden my-4 h-12">
+                <input class="p-0 pt-5 border-none w-full h-full focus:outline-none focus:ring-0" type="email" name="email" id="email" required>
+                <label class="border-b-2 border-fuchsia-600 absolute bottom-0 left-0 w-full h-full pointer-events-none" for="email">
+                    <span class="label-name text-gray-500">Email</span>
+                </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
