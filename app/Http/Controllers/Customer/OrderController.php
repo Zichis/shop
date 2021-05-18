@@ -155,7 +155,11 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        toast('Order deleted successfully!','success')->width('20rem')->position('top');
+
+        return redirect()->route('customer.orders.index');
     }
 
     public function confirm(Request $request, Order $order)
@@ -182,6 +186,6 @@ class OrderController extends Controller
 
         toast('Order sent successfully!','success')->width('20rem')->position('top');
 
-        return redirect()->route('customer.cart.index');
+        return redirect()->route('customer.orders.index');
     }
 }

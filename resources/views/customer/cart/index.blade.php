@@ -30,7 +30,14 @@
                                     <td class="p-2">{{ $order->total }}</td>
                                     <td class="p-2">
                                         <a class="inline-block my-1 py-1 px-3 bg-green-500 text-white rounded hover:bg-green-600" href="{{ route('customer.orders.confirm', ['order' => $order->id]) }}">Confirm</a>
-                                        <a class="inline-block my-1 py-1 px-3 bg-blue-500 text-white rounded hover:bg-blue-600" href="{{ route('customer.orders.edit', ['order' => $order->id]) }}">Update</a>
+                                        <a class="inline-block my-1 py-1 px-3 bg-blue-500 text-white rounded hover:bg-blue-600" href="{{ route('customer.orders.edit', ['order' => $order->id]) }}">Change Quantity</a>
+                                        <form class="inline-block" action="{{ route('customer.orders.destroy', ['order' => $order->id]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="inline-block my-1 py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600" type="submit">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
