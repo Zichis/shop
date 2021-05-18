@@ -23,7 +23,7 @@
                         </label>
                     </div>
                     <div class="material-form-control relative overflow-hidden my-4 h-12">
-                        <input class="p-0 pt-5 border-none w-full h-full focus:outline-none focus:ring-0" value="@if(old('description')){{ old('description') }}@else{{ $product->description }}@endif" type="text" name="description" id="description" required>
+                        <input class="p-0 pt-5 border-none w-full h-full focus:outline-none focus:ring-0" value="@if(old('description')){{ old('description') }}@else{{ $product->description }}@endif" type="text" name="description" id="description">
                         <label class="border-b-2 border-fuchsia-600 absolute bottom-0 left-0 w-full h-full pointer-events-none" for="description">
                             <span class="label-name text-gray-500">Description</span>
                         </label>
