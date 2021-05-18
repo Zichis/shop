@@ -105,7 +105,7 @@ class OrderController extends Controller
     public function reject(Order $order)
     {
         $order->update([
-            'status' => 'pending'
+            'status' => 'cancelled'
         ]);
 
         $product = Product::find($order->product_id);
