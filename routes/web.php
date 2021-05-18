@@ -48,7 +48,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('information', InformationController::class);
 });
 
-Route::middleware(['auth'])->name('customer.')->prefix('customer')->group(function () {
+Route::middleware(['auth','customer'])->name('customer.')->prefix('customer')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     //Route::get('/cart/confirm', [CartController::class, 'confirm'])->name('cart.confirm');
