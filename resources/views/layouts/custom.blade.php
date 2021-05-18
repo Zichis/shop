@@ -36,14 +36,16 @@
                             </form>
                         </div>
                         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                            <a href="{{ route('customer.cart.index') }}" class="relative bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                                <span class="sr-only">View cart</span>
-                                <i class="fas fa-shopping-cart text-xl"></i>
-                                @if ($cartCount > 0)
-                                    <div class="bg-red-500 rounded-full text-xs w-2 h-2 flex justify-center items-center absolute top-0 right-0 text-white">
-                                    </div>
-                                @endif
-                            </a>
+                            @role('ROLE_CUSTOMER')
+                                <a href="{{ route('customer.cart.index') }}" class="relative bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                                    <span class="sr-only">View cart</span>
+                                    <i class="fas fa-shopping-cart text-xl"></i>
+                                    @if ($cartCount > 0)
+                                        <div class="bg-red-500 rounded-full text-xs w-2 h-2 flex justify-center items-center absolute top-0 right-0 text-white">
+                                        </div>
+                                    @endif
+                                </a>
+                            @endrole
                             <div class="ml-3 relative">
                                 <div>
                                   <button id="userMenuButton" type="button" class="bg-gray-800 p-1 text-gray-400 hover:text-white flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
