@@ -64,7 +64,7 @@
                 @if (count($category->products) > 0)
                     <div class="flex justify-between items-center rounded bg-yellow-600 text-white mb-3 px-2 py-1">
                         <p class="my-2">{{ $category->name }}</p>
-                        <a href="{{ route('products.index') }}" class="underline">View All</a>
+                        <a href="{{ route('products.index', ['category' => $category->name]) }}" class="underline">View All</a>
                     </div>
                 @endif
                 <div class="flex flex-wrap -m-4">
