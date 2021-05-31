@@ -26,7 +26,11 @@
                                 <td class="p-2">{{ $product->quantity }}</td>
                                 <td class="p-2">
                                     <a class="mx-2 text-gray-600 hover:text-gray-800" href="{{ route('admin.products.edit', ['product' => $product->id]) }}"><i class="fas fa-edit"></i></a>
-                                    <a class="mx-2 text-red-600 hover:text-red-800" href="#"><i class="fas fa-trash"></i></a>
+                                    <form class="inline-block" action="{{ route('admin.products.destroy', ['product' => $product->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="mx-2 text-red-600 hover:text-red-800"><i class="fas fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
