@@ -150,6 +150,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        toast('Product Deleted!','success')->width('20rem')->position('top');
+
+        return redirect()->route('admin.products.index');
     }
 }
